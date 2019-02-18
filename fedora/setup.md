@@ -1,3 +1,9 @@
+# About
+
+These are the notes on how I set up a system. Some of this is specific to my workflow, but a good bit of it is general enough for others.
+
+Note, this doesn't include things like cloning my dotfiles repos, setting up my terminals the way I like, etc.
+
 # Update The System
 
 ```
@@ -6,8 +12,16 @@ $ sudo dnf update
 
 # Install Required Packages
 
+Most of these (minus `flatpak` and `snapd` are specific to my workflow/job).
+
 ```
 $ sudo dnf install vim git zsh tilix cmake curl pkg-config openssl-devel dconf flatpak snapd
+```
+
+Make sure the basic compiler and tools are installed:
+
+```
+$ sudo dnf groupinstall development-tools
 ```
 
 # Fedora Workstation Repos (if required)
@@ -17,7 +31,6 @@ Provides:
 * Steam
 * nVidia Driver
 * Chrome
-
 
 ```
 $ sudo dnf install fedora-workstation-repositories
@@ -38,8 +51,12 @@ $ sudo dnf install \
  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
  
-$ sudo dnf install rpmfusion-free-release-tainted
-$ sudo dnf install rpmfusion-nonfree-release-tainted
+$ sudo dnf install rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
+```
+
+If you need some special firmware (luzbot, b43, etc.):
+
+```
 $ sudo dnf install \*-firmware
 ```
 
@@ -48,6 +65,44 @@ $ sudo dnf install \*-firmware
 ```
 $ sudo dnf groupupdate multimedia
 $ sudo dnf groupupdate sound-and-video
+```
+
+## Web Streaming
+
+```
+$ sudo dnf install xine-lib\* 
+```
+
+```
+$ sudo dnf install gstreamer1-{plugin-crystalhd,ffmpeg,plugins-{good,ugly,bad{,-free,-nonfree,-freeworld,-extras}{,-extras}}} libmpg123 lame-libs --setopt=strict=0
+```
+
+Remove one package which is included in the one liner from above, but we don't actually need.
+
+```
+$ dnf remove gstreamer1-plugins-ugly
+```
+
+```
+$ sudo dnf install gstreamer1-plugin-mpg123 mpg123-libs
+```
+
+Install two programs which pull most of the libs the system needs for audio/video:
+
+```
+$ sudo dnf install vlc ffmpeg
+```
+
+# Add the Fira Code Fonts COPR repository
+
+```
+$ sudo dnf copr enable evana/fira-code-fonts
+```
+
+Install the fonts
+
+```
+$ sudo dnf install fira-code-fonts
 ```
 
 # Flatpak
@@ -117,27 +172,22 @@ $ newgrp myuser
 $ lxd init                                              # Start using lxd
 ```
 
-# Multimedia Web Streaming
+# Keybase
 
-These notes are older and I usally follow them, but depending on my machine they may not be required:
-
-```
-$ sudo dnf install xine-lib\* k3b-extras-freeworld
-```
+Download RPM and install:
 
 ```
-$ sudo dnf install gstreamer1-{plugin-crystalhd,ffmpeg,plugins-{good,ugly,bad{,-free,-nonfree,-freeworld,-extras}{,-extras}}} libmpg123 lame-libs --setopt=strict=0
+$ sudo dnf install https://prerelease.keybase.io/keybase_amd64.rpm
 ```
 
-```
-$ dnf remove gstreamer1-plugins-ugly
-```
+# Standard Notes
 
-```
-$ sudo dnf install gstreamer1-plugin-mpg123 mpg123-libs
-```
+My most used notes program.
 
-```
-$ sudo dnf install vlc
-```
+Download page: https://standardnotes.org/extensions?downloaded=linux
 
+# Buttercup.pw
+
+Password manager.
+
+Download page: https://buttercup.pw/
