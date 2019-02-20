@@ -107,31 +107,7 @@ $ sudo dnf install fira-code-fonts
 
 # Flatpak
 
-Add the Flathub.org remote:
-
-```
-$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-```
-
-Install the apps I use:
-
-* VSCode
-* Telegram
-* Slack
-* Dropbox
-* Signal
-* Discord
-* GitKraken
-
-```
-$ flatpak install -y flathub com.axosoft.GitKraken
-$ flatpak install -y flathub com.discordapp.Discord
-$ flatpak install -y flathub com.dropbox.Client
-$ flatpak install -y flathub com.slack.Slack
-$ flatpak install -y flathub com.visualstudio.code.oss
-$ flatpak install -y flathub org.signal.Signal
-$ flatpak install -y flathub org.telegram.desktop
-```
+Follow [../generic/flatpak.md](../generic/flatpak.md)
 
 # Snap
 
@@ -178,16 +154,30 @@ Download RPM and install:
 
 ```
 $ sudo dnf install https://prerelease.keybase.io/keybase_amd64.rpm
+$ run_keybase
 ```
 
 # Standard Notes
 
 My most used notes program.
 
-Download page: https://standardnotes.org/extensions?downloaded=linux
+Download `.AppImage` from: https://standardnotes.org/extensions?downloaded=linux
+
+## Install
+
+```
+$ chmod u+x standard-notes-3.0.4-x86_64.AppImage
+$ ./standard-notes-3.0.4-x86_64.AppImage
+```
 
 # Buttercup.pw
 
 Password manager.
 
-Download page: https://buttercup.pw/
+Download `.RPM` from: https://buttercup.pw/
+
+## Install
+
+```
+$ sudo dnf install ./buttercup.rpm
+```
